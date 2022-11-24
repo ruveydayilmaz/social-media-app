@@ -1,9 +1,23 @@
-const {Server} = require('socket.io');
+require('dotenv').config()
 
-const io = new Server({
+// routes
+const router = require('./routes/notification');
+
+const express = require("express");
+
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+const http = require('http');
+const { createNotification } = require('./controllers/notifications');
+
+const app = express();
+const server = http.createServer(app);
+
+const io = require("socket.io")(server, {
     cors: {
-        origin: "*"
-    }
+      origin: "http://127.0.0.1:5173",
+    },
 });
 
 let users = [];
@@ -35,6 +49,8 @@ io.on("connection", (socket) => {
 
         console.log(receiverName);
         io.to(receiverName.socketId).emit("get-notification", {sender, type});
+
+        createNotification({sender, receiver, type});
     });
 
     socket.on("disconnect", () => {
@@ -44,4 +60,18 @@ io.on("connection", (socket) => {
     });
 });
 
-io.listen(5000);
+// middleware
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+// routes
+app.use('/notification', router);
+
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
+mongoose
+  .connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => server.listen(5000, () => console.log(`Listening at Port 5000`)))
+  .catch((error) => console.log(`${error} did not connect`));
