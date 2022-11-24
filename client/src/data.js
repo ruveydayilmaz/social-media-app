@@ -13,4 +13,11 @@ export const posts = [
       userImg: "https://i.pinimg.com/564x/d2/79/ba/d279ba7e642a0ffcc629bb6871ea1f71.jpg",
       postImg: "https://images.pexels.com/photos/3497624/pexels-photo-3497624.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
     },
+    {
+      id: 3,
+      username:"kate",
+      fullname: "Kate",
+      userImg: "https://i.pinimg.com/564x/5f/97/2a/5f972aeb66981bb05a3e40e67c70c815.jpg",
+      postImg: "https://images.freeimages.com/images/large-previews/f8f/sleeping-cat-1634964.jpg",
+    },
   ];

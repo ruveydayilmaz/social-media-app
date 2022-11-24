@@ -26,6 +26,7 @@ function App() {
           <Navbar socket={socket}/>
           {
             posts.map(post => (
+              post.username !== user &&
               <Card key={post.id} post={post} socket={socket} user={user} />
             ))
           }
