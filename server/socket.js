@@ -5,7 +5,7 @@ const socket = (server) => {
 
     const io = require("socket.io")(server, {
         cors: {
-          origin: "http://127.0.0.1:5173",
+          origin: process.env.CLIENT_URL,
         },
     });
 
@@ -70,7 +70,6 @@ const socket = (server) => {
             if(receiverName) {
                 console.log(receiverName);
                 io.to(receiverName.socketId).emit("get-notification", {sender, type});
-                createNotification({sender, receiver, type});
             } else {
                 console.log("user not online");
                 var text = "";
@@ -84,6 +83,8 @@ const socket = (server) => {
         
                 sendNotification(notification);
             }
+
+            createNotification({sender, receiver, type});
         });
 
         socket.on("disconnect", () => {
