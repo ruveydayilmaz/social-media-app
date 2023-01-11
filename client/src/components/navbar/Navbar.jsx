@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./navbar.css"
 
-const Navbar = ({socket}) => {
+const Navbar = ({socket, user}) => {
     const [notifications, setNotifications] = useState([])
     const [open, setOpen] = useState(false)
 
@@ -13,9 +13,8 @@ const Navbar = ({socket}) => {
 
     return (
         <div className="navbar">
-            <span className="logo">Notify</span>
+            <span className="logo">notifications w/ sockets & onesignal</span>
             <div className="icons">
-                <i className="fa fa-search"></i>
                 <div className="icon" onClick={() => setOpen(!open)}>
                     <i className="fa fa-bell"></i>        
                     {
@@ -25,6 +24,7 @@ const Navbar = ({socket}) => {
                 </div>
 
                 <i className="fa fa-user"></i>
+                <p>{user}</p>
             </div>
             <div className="notifications">
                 {

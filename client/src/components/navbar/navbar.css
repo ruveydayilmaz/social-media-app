@@ -1,7 +1,7 @@
 .navbar {
     height: 50px;
     padding: 0 10px;
-    background-color: #4CAF50;
+    background-color: #4c56af;
     color: white;
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@
     position: absolute;
     top: 50px;
     right: 0;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(245, 245, 245);
     color: black;
     display: flex;
     flex-direction: column;
@@ -53,10 +53,14 @@
 
 .mark {
     font-size: 12px;
-    background-color: #4CAF50;
+    background-color: #4c56af;
     font-weight: bold;
     width: 80%;
     margin: 0 auto;
     margin-bottom: 5px;
+    margin-top: 5px;
     color: white;
+    border-style: none;
+    border-radius: 5px;
+    padding: 5px;
 }

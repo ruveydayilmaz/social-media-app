@@ -5,8 +5,6 @@ const Card = ({post, socket, user}) => {
     const [liked, setLiked] = useState(false)
 
     const handleNotification = (type) => {
-        setLiked(true)
-
         socket.emit("notification", {
             sender: user,
             receiver: post.username,
@@ -26,7 +24,7 @@ const Card = ({post, socket, user}) => {
                     liked ?
                     <i className="fa fa-heart red" onClick={() => setLiked(!liked)}></i>
                     :
-                    <i className="fa fa-heart-o" onClick={() => handleNotification(1)}></i>
+                    <i className="fa fa-heart-o" onClick={() =>{ handleNotification(1);  setLiked(true)} }></i>
                 }
                 <i className="fa fa-comment" onClick={() => handleNotification(2)}></i>
                 <i className="fa fa-share"></i>

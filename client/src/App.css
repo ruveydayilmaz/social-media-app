@@ -3,11 +3,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .main-page {
-    width: 50vh;
-    height: 70vh;
+    width: 60vh;
+    height: 90vh;
     overflow-y: auto;
     border-radius: 5px;
     border: 0.5px solid #ccc;
@@ -30,7 +31,8 @@ input {
 .login button {
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #4c56af;
+    text-transform: uppercase;
     color: white;
     border: none;
     border-radius: 5px;

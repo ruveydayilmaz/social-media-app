@@ -23,14 +23,13 @@ function App() {
     <div className="App">
       {user ? (
         <div className="main-page">
-          <Navbar socket={socket}/>
+          <Navbar socket={socket} user={user}/>
           {
             posts.map(post => (
               post.username !== user &&
               <Card key={post.id} post={post} socket={socket} user={user} />
             ))
           }
-          <span className="username">{user}</span>
         </div>
       ) : (
         <div className="login">
